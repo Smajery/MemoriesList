@@ -1,15 +1,27 @@
 import React from 'react';
 import {useNavigate} from "react-router-dom";
 import {ROUTE_HOME, ROUTE_LOGIN, ROUTE_MEMORY} from "../../utils/consts";
+import {useSelector} from "react-redux";
+import {useActions} from "../../hooks/useActions";
 
 const Navbar = () => {
     const navigate = useNavigate()
+    const isAuth = useSelector(state => state.authReducer.isAuth)
+    const {logOut} = useActions()
+
     return (
-        <ul className='nav'>
-          <li onClick={() => navigate(ROUTE_HOME)}>Home</li>
-          <li onClick={() => navigate(ROUTE_MEMORY)}>Memory</li>
-          <li onClick={() => navigate(ROUTE_LOGIN)}>Login</li>
-        </ul>
+        isAuth
+            ?
+            <ul className='nav'>
+                <li onClick={() => navigate(ROUTE_HOME)}>Home</li>
+                <li onClick={() => navigate(ROUTE_MEMORY)}>Memory</li>
+                <li onClick={logOut}>Выйти</li>
+            </ul>
+            :
+            <ul className='nav'>
+                <li onClick={() => navigate(ROUTE_HOME)}>Home</li>
+                <li onClick={() => navigate(ROUTE_LOGIN)}>Login</li>
+            </ul>
     );
 };
 

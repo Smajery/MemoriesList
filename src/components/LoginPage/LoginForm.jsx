@@ -1,9 +1,13 @@
 import React, {useState} from 'react';
+import {useActions} from "../../hooks/useActions";
 
 const LoginForm = () => {
     const [emailValue, setEmailValue] = useState('')
     const [passwordValue, setPasswordValue] = useState('')
     const [haveAccount, setHaveAccount] = useState(true)
+
+    const {logIn} = useActions()
+
 
     return (
         <div className='login-form'>
@@ -26,22 +30,22 @@ const LoginForm = () => {
                         <div className='btn-box__text'>
                             <p>Немає облікового запису?
                                 <span>
-                                            <a onClick={() => setHaveAccount(false)}>Зареєструйтесь!</a>
-                                        </span>
+                                    <a onClick={() => setHaveAccount(false)}>Зареєструйтесь!</a>
+                                </span>
                             </p>
                         </div>
                         :
                         <div className='btn-box__text'>
                             <p>У вас вже є обліковий запис?
                                 <span>
-                                            <a onClick={() => setHaveAccount(true)}>Увійдіть!</a>
-                                        </span>
+                                    <a onClick={() => setHaveAccount(true)}>Увійдіть!</a>
+                                </span>
                             </p>
                         </div>
                     }
                     {haveAccount
                         ?
-                        <button>Увійти</button>
+                        <button onClick={logIn}>Увійти</button>
                         :
                         <button>Зареєструйтесь</button>
                     }
