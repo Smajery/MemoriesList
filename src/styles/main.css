@@ -1,0 +1,7 @@
+@import url('Content/HomePage/home-page.css');
+@import url('Content/LoginPage/login-page.css');
+@import url('Content/MemoryPage/memory-page.css');
+
+.main {
+    min-height: 90vh;
+}
