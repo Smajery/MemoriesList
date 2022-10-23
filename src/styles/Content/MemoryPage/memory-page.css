@@ -1,36 +1,34 @@
 .memory-page {
     display: flex;
 }
-.sidebar {
+.category-bar {
     min-width: 20vw;
     min-height: 90vh;
     display: flex;
     flex-direction: column;
     border-right: 2px solid black;
 }
-.list {
-    padding-left: 40px;
-    padding-bottom: 20px;
+.category__list {
+    padding: 30px 10px 20px 40px;
     min-height: 100px;
     border-bottom: 2px solid black;
     background: #FFF3EB;
 }
 .list-name {
-    padding-top: 30px;
     display: flex;
     align-items: center;
 }
 .categories {
-    padding-left: 30px;
-    padding-top: 10px;
+    padding-left: 10px;
     display: flex;
     flex-direction: column;
 }
 .category-name{
+    padding-left: 10px;
     margin-bottom: 5px;
     background: transparent;
     font-size: 14pt;
-    border: none;
+    border-radius: 5px;
     cursor: pointer;
 }
 .btn-add {
