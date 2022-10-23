@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MemoryItem from "../components/MemoryPage/MemoryItem";
 import {useNavigate} from "react-router-dom";
 import {ROUTE_MEMORY_ITEM} from "../utils/consts";
@@ -11,6 +11,24 @@ const MemoryPage = () => {
     const {categoryItems, categories, selectedCategory} = useSelector(state => state.memoryReducer)
     const {setSelectedCategory, addCategory, setSelectedCategoryName} = useActions()
 
+    const [sortedCategoryItems, setSortedCategoryItems] = useState([])
+
+
+    function sortedArray() {
+        const newArray = []
+        for (let i = 0; i < categoryItems.length; i++){
+            if(categoryItems[i].category === selectedCategory.id){
+                newArray.push(categoryItems[i])
+            }
+        }
+        return setSortedCategoryItems(newArray)
+    }
+
+    useEffect(() => {
+        sortedArray()
+    }, [selectedCategory])
+
+
     return (
         <div className='memory-page'>
             <div className='category-bar'>
@@ -22,38 +40,47 @@ const MemoryPage = () => {
                                 className='category-name'
                                 key={item.id}
                                 onClick={() => setSelectedCategory(item)}
-                                style={{border: item.id === selectedCategory.id ? '2px solid black' : 'none'}}
+                                style={{border: item.id === selectedCategory.id ? '2px solid black' : '2px solid transparent'}}
                             >
-                                {item.name}
+                                {item.name
+                                    ?
+                                    <a>{item.name}</a>
+                                    :
+                                    <a>Назва категорії</a>
+                                }
                             </div>
                         )}
                     </div>
                 </div>
                 <button
                     className='btn-add'
-                    onClick={() => addCategory('New Category')}
+                    onClick={() => addCategory('Назва категорії')}
                 >
                     Додати
                 </button>
             </div>
             <div className='content'>
                 <div className='content-name'>
-                    {!selectedCategory.name
+                    {!selectedCategory.id
                         ?
                         <h2>Ви не обрали жодної категорії</h2>
                         :
-                        <input
-                            type='text'
-                            value={selectedCategory.name}
-                            onChange={e => setSelectedCategoryName(e.target.value)}
-                        />
+                        <div>
+                            <input
+                                type='text'
+                                placeholder='Назва категорії'
+                                maxLength={15}
+                                value={selectedCategory.name}
+                                onChange={e => setSelectedCategoryName(e.target.value)}
+                            />
+                        </div>
 
                     }
                 </div>
                 <div className='content__items'>
-                    {selectedCategory.name
+                    {selectedCategory.id
                         &&
-                        categoryItems.map(item =>
+                        sortedCategoryItems.map(item =>
                             <MemoryItem
                                 key={item.id}
                                 img={item.img}

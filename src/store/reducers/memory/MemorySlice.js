@@ -1,20 +1,21 @@
 import {createSlice} from "@reduxjs/toolkit";
-import img from "../../../img/wine.png";
+import imgWine from "../../../img/wine.png";
+import imgGame from "../../../img/game.png";
 
 const initialState = {
     categoryItems: [
-        {id: 1, name: 'Вино 1', img: img, category: 'Вина'},
-        {id: 2, name: 'Вино 2', img: img, category: 'Вина'},
-        {id: 3, name: 'Вино 3', img: img, category: 'Вина'},
-        {id: 4, name: 'Вино 4', img: img, category: 'Вина'},
-        {id: 5, name: 'Вино 5', img: img, category: 'Вина'},
-        {id: 6, name: 'Вино 6', img: img, category: 'Вина'},
-        {id: 7, name: 'Ігра 1', img: img, category: 'Ігри'},
-        {id: 8, name: 'Ігра 2', img: img, category: 'Ігри'},
-        {id: 9, name: 'Ігра 3', img: img, category: 'Ігри'},
-        {id: 10, name: 'Ігра 4', img: img, category: 'Ігри'},
-        {id: 11, name: 'Ігра 5', img: img, category: 'Ігри'},
-        {id: 12, name: 'Ігра 6', img: img, category: 'Ігри'},
+        {id: 1, name: 'Вино 1', img: imgWine, category: 1},
+        {id: 2, name: 'Вино 2', img: imgWine, category: 1},
+        {id: 3, name: 'Вино 3', img: imgWine, category: 1},
+        {id: 4, name: 'Вино 4', img: imgWine, category: 1},
+        {id: 5, name: 'Вино 5', img: imgWine, category: 1},
+        {id: 6, name: 'Вино 6', img: imgWine, category: 1},
+        {id: 7, name: 'Ігра 1', img: imgGame, category: 2},
+        {id: 8, name: 'Ігра 2', img: imgGame, category: 2},
+        {id: 9, name: 'Ігра 3', img: imgGame, category: 2},
+        {id: 10, name: 'Ігра 4', img: imgGame, category: 2},
+        {id: 11, name: 'Ігра 5', img: imgGame, category: 2},
+        {id: 12, name: 'Ігра 6', img: imgGame, category: 2},
     ],
     categories: [
         {id: 1, name: 'Вина'},
