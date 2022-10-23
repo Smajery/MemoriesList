@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import MemoryItem from "../components/MemoryPage/MemoryItem";
 import {useNavigate} from "react-router-dom";
 import {ROUTE_MEMORY_ITEM} from "../utils/consts";
@@ -13,7 +13,7 @@ const MemoryPage = () => {
 
     const [sortedCategoryItems, setSortedCategoryItems] = useState([])
 
-    function fetchItems() {
+    const handleItems = useCallback(() => {
         const newArray = []
         for (let i = 0; i < categoryItems.length; i++) {
             if (categoryItems[i].category === selectedCategory.id) {
@@ -21,10 +21,10 @@ const MemoryPage = () => {
             }
         }
         return setSortedCategoryItems(newArray)
-    }
+    }, [selectedCategory])
     //Сделать useMemo
     useEffect(() => {
-        fetchItems()
+        handleItems()
     }, [selectedCategory])
 
 
