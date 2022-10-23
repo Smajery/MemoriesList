@@ -1,8 +1,8 @@
-import {userSlice} from "./UserSlice";
+import {authSlice} from "./AuthSlice";
 
 export const AuthActionCreator = {
     setIsAuth: (isAuth) => dispatch => {
-        dispatch(userSlice.actions.setIsAuth(isAuth))
+        dispatch(authSlice.actions.setIsAuth(isAuth))
     },
     logIn: () => async dispatch => {
         try {

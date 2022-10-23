@@ -1,13 +1,13 @@
 import React from 'react';
 
-const MemoryItem = () => {
+const MemoryItem = (props) => {
     return (
-        <div className='item'>
+        <div className='item' onClick={props.onClick}>
             <div className='item__img'>
-                <a>Img</a>
+                <img src={props.img} alt={props.name} width={50} height={70}/>
             </div>
             <div className='item__text'>
-                <a>Name</a>
+                {props.name}
             </div>
         </div>
     );

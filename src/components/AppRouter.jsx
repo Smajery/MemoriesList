@@ -1,5 +1,5 @@
 import React from 'react';
-import {Navigate, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {privateRoutes, publicRoutes} from "../routes";
 import {useSelector} from "react-redux";
 
@@ -14,7 +14,7 @@ const AppRouter = () => {
                     <Route
                         key={route.path}
                         path={route.path}
-                        element={<route.component/>}
+                        element={<route.component />}
                     />
                 )}
             </Routes>
