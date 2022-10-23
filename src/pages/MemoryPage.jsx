@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 import MemoryItem from "../components/MemoryPage/MemoryItem";
 import {useNavigate} from "react-router-dom";
 import {ROUTE_MEMORY_ITEM} from "../utils/consts";
@@ -13,19 +13,18 @@ const MemoryPage = () => {
 
     const [sortedCategoryItems, setSortedCategoryItems] = useState([])
 
-
-    function sortedArray() {
+    function fetchItems() {
         const newArray = []
-        for (let i = 0; i < categoryItems.length; i++){
-            if(categoryItems[i].category === selectedCategory.id){
+        for (let i = 0; i < categoryItems.length; i++) {
+            if (categoryItems[i].category === selectedCategory.id) {
                 newArray.push(categoryItems[i])
             }
         }
         return setSortedCategoryItems(newArray)
     }
-
+    //Сделать useMemo
     useEffect(() => {
-        sortedArray()
+        fetchItems()
     }, [selectedCategory])
 
 
@@ -33,7 +32,9 @@ const MemoryPage = () => {
         <div className='memory-page'>
             <div className='category-bar'>
                 <div className='category__list'>
-                    <div className='list-name'><h2>Ваш список</h2></div>
+                    <div className='list-name'>
+                        <h2>Ваш список</h2>
+                    </div>
                     <div className='categories'>
                         {categories.map(item =>
                             <div
