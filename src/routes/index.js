@@ -1,4 +1,4 @@
-import {ROUTE_HOME, ROUTE_LOGIN, ROUTE_MEMORY, ROUTE_MEMORY_ITEM} from "../utils/consts";
+import {ROUTE_HOME, ROUTE_LOGIN, ROUTE_MEMORY} from "../utils/consts";
 import loadable from "@loadable/component";
 import Loader from "../components/UI/Loader/Loader";
 
@@ -24,5 +24,5 @@ export const publicRoutes = [
 export const privateRoutes = [
     {path: ROUTE_HOME, component: HomePage},
     {path: ROUTE_MEMORY, component: MemoryPage},
-    {path: ROUTE_MEMORY_ITEM + '/:id', component: ItemPage},
+    {path: ROUTE_MEMORY + '/:id' + '/:id', component: ItemPage},
 ]
