@@ -1,5 +1,6 @@
 footer {
     padding: 0 40px;
+    min-width: 100vw;
     min-height: 10vh;
     background: #E0AB9A;
     border-top: 2px solid black;

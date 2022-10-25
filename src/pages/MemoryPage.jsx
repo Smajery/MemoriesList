@@ -21,7 +21,7 @@ const MemoryPage = () => {
 
     useEffect(() => {
         handleItems()
-    }, [selectedCategory, categoryItems])
+    }, [selectedCategory, categoryItems, handleItems])
 
 
     return (
@@ -41,9 +41,9 @@ const MemoryPage = () => {
                             >
                                 {item.name
                                     ?
-                                    <a>{item.name}</a>
+                                    <p>{item.name}</p>
                                     :
-                                    <a>Назва категорії</a>
+                                    <p>Назва категорії</p>
                                 }
                             </div>
                         )}
@@ -97,6 +97,7 @@ const MemoryPage = () => {
                                 img={item.img}
                                 name={item.name}
                                 id={item.id}
+                                rate={item.rating}
                                 selectedCategoryName={selectedCategory.name}
                             />
                         )
