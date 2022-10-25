@@ -1,13 +1,9 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import MemoryItem from "../components/MemoryPage/MemoryItem";
-import {useNavigate} from "react-router-dom";
-import {ROUTE_MEMORY} from "../utils/consts";
 import {useSelector} from "react-redux";
 import {useActions} from "../hooks/useActions";
 
 const MemoryPage = () => {
-    const navigate = useNavigate()
-
     const {categoryItems, categories, selectedCategory} = useSelector(state => state.memoryReducer)
     const {setSelectedCategory, addCategory, setSelectedCategoryName, removeCategory, addItemInCategory} = useActions()
 
@@ -61,12 +57,15 @@ const MemoryPage = () => {
                 </button>
             </div>
             <div className='content-bar'>
-                <div className='content-name'>
-                    <div className='content-name__text'>
-                        {!selectedCategory.id
-                            ?
-                            <h2>Ви не обрали жодної категорії</h2>
-                            :
+                {selectedCategory.id
+                    ?
+                    <div className='content-name'>
+                        <button
+                            className='btn-sort'
+                        >
+                            Сортування
+                        </button>
+                        <div className='content-name__text'>
                             <input
                                 type='text'
                                 placeholder='Назва категорії'
@@ -74,32 +73,34 @@ const MemoryPage = () => {
                                 value={selectedCategory.name}
                                 onChange={e => setSelectedCategoryName(e.target.value)}
                             />
-                        }
-                    </div>
-                    {selectedCategory.id
-                        &&
+                        </div>
                         <button
                             className='btn-remove'
                             onClick={removeCategory}
                         >
                             Видалити
                         </button>
-                    }
-                </div>
-                <div className='content__items'>
-                    {selectedCategory.id
-                        &&
-                        sortedCategoryItems.map(item =>
+                    </div>
+                    :
+                    <div className='content-name'>
+                        <div className='content-name__text'>
+                            <h2>Ви не обрали жодної категорії</h2>
+                        </div>
+                    </div>
+                }
+                {selectedCategory.id
+                    &&
+                    <div className='content__items'>
+                        {sortedCategoryItems.map(item =>
                             <MemoryItem
                                 key={item.id}
                                 img={item.img}
                                 name={item.name}
-                                onClick={() => navigate(ROUTE_MEMORY + '/' + selectedCategory.name + '/' + item.name)}
+                                id={item.id}
+                                selectedCategoryName={selectedCategory.name}
                             />
                         )
-                    }
-                    {selectedCategory.id
-                        &&
+                        }
                         <div className='btn-add-box'>
                             <button
                                 onClick={() => addItemInCategory(prompt('', 'Назва предмета'), selectedCategory.id)}
@@ -107,8 +108,8 @@ const MemoryPage = () => {
                                 Додати
                             </button>
                         </div>
-                    }
-                </div>
+                    </div>
+                }
             </div>
         </div>
     );

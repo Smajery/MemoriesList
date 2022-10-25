@@ -44,13 +44,16 @@ export const memorySlice = createSlice({
         addCategory(state, action) {
             state.categories = [...state.categories, action.payload]
         },
+        addItemInCategory(state, action) {
+            state.categoryItems = [...state.categoryItems, action.payload]
+        },
         removeCategory(state) {
             state.categories = state.categories.filter(category => category.id !== state.selectedCategory.id)
             state.selectedCategory = {}
         },
-        addItemInCategory(state, action) {
-            state.categoryItems = [...state.categoryItems, action.payload]
-        }
+        removeItemInCategory(state, action) {
+            state.categoryItems = state.categoryItems.filter(item => item.id !== action.payload)
+        },
     }
 })
 export default memorySlice.reducer

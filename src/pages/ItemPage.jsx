@@ -2,7 +2,7 @@ import React from 'react';
 
 const ItemPage = () => {
     return (
-        <div>
+        <div className='item-page'>
             {console.log(window.location.pathname)}
         </div>
     );

@@ -35,7 +35,21 @@ export const MemoryActionCreator = {
     },
     removeCategory: () => dispatch => {
         try {
-            dispatch(memorySlice.actions.removeCategory())
+            const result = window.confirm('Ви впевнені, що хочете видалити категорію?')
+            if(result){
+                dispatch(memorySlice.actions.removeCategory())
+            }
+        }catch (e) {
+            console.log(e)
+        }
+    },
+    removeItemInCategory: (itemId) => dispatch => {
+        try {
+            //stopPropagation
+            const result = window.confirm('Ви впевнені, що хочете видалити категорію?')
+            if(result){
+                dispatch(memorySlice.actions.removeItemInCategory(itemId))
+            }
         }catch (e) {
             console.log(e)
         }
