@@ -3,10 +3,12 @@ import React, {useCallback, useEffect, useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {ROUTE_MEMORY} from "../../utils/consts";
 import star from '../../img/starsvg.svg'
+import {useActions} from "../../hooks/useActions";
 
-const MemoryItem = (props) => {
+const MemoryItem = ({selectedCategoryName, item}) => {
     const navigate = useNavigate()
 
+    const {setSelectedCategoryItem} = useActions()
     // const {removeItemInCategory} = useActions()
 
     // function handleRemoveItem(e) {
@@ -18,28 +20,33 @@ const MemoryItem = (props) => {
 
     const amountStars = useCallback(() => {
         const newArray = []
-        for (let i = 1; i <= props.rate; i++) {
+        for (let i = 1; i <= item.rating; i++) {
             newArray.push(i)
         }
         return setRatingArray(newArray)
-    }, [props.rate])
+    }, [item.rating])
+
+    function openItemPage() {
+        setSelectedCategoryItem(item)
+        navigate(ROUTE_MEMORY + '/' + selectedCategoryName + '/' + item.name)
+    }
 
     useEffect(() => {
         amountStars()
-    }, [props.rate, amountStars])
+    }, [item.rating, amountStars])
 
 
     return (
         <div
             className='item'
-            onClick={() => navigate(ROUTE_MEMORY + '/' + props.selectedCategoryName + '/' + props.name)}
+            onClick={openItemPage}
         >
             <div className='item__img-box'>
-                <img src={props.img} alt={props.name}/>
+                <img src={item.img} alt={item.name}/>
             </div>
             <div className='item__content-box'>
                 <div className='text-box'>
-                    <p>{props.name}</p>
+                    <p>{item.name}</p>
                 </div>
                 <div className='rating-box'>
                     {ratingArray.map(rate =>

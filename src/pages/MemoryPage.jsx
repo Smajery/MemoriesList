@@ -17,7 +17,7 @@ const MemoryPage = () => {
             }
         }
         return setSelectedCategoryItems(newArray)
-    }, [selectedCategory, categoryItems, setSelectedCategoryItems])
+    }, [selectedCategory, categoryItems])
 
     useEffect(() => {
         handleItems()
@@ -92,10 +92,7 @@ const MemoryPage = () => {
                         {selectedCategoryItems.map(item =>
                             <MemoryItem
                                 key={item.id}
-                                img={item.img}
-                                name={item.name}
-                                id={item.id}
-                                rate={item.rating}
+                                item={item}
                                 selectedCategoryName={selectedCategory.name}
                             />
                         )

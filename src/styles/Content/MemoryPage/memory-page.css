@@ -69,9 +69,9 @@
     align-items: center;
     justify-content: center;
     border-bottom: 2px solid black;
+    position: relative;
 }
 .content-name__text {
-    margin: 0 auto;
     min-height: 40px;
     display: flex;
     align-items: center;
@@ -89,9 +89,13 @@
     background: #FFF3EB;
     border: 2px solid black;
     border-radius: 25px;
+    position: absolute;
+    right: 40px;
 }
 .memories-select {
-    width: 120px;
+    width: 122px;
+    position: absolute;
+    left: 40px;
 }
 .content__items {
     padding: 30px 40px;
@@ -169,7 +173,5 @@
 }
 
 @media screen and (max-width: 767px) {
-    .content-name {
-        flex-direction: column-reverse;
-    }
+
 }

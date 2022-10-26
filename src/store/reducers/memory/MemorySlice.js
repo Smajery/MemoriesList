@@ -26,10 +26,11 @@ const initialState = {
     selectedCategoryItems: [],
     options: [
         {name: 'По імені', value: 'name'},
-        {name: 'По рейтингу: по убыванию', value: 'ratingDown'},
-        {name: 'По рейтингу: по возрастанию', value: 'ratingUp'},
+        {name: 'По рейтингу: за спаданням', value: 'ratingDown'},
+        {name: 'По рейтингу: за зростанням', value: 'ratingUp'},
     ],
-    selectedSort: ''
+    selectedSort: '',
+    selectedCategoryItem: {},
 }
 export const memorySlice = createSlice({
     name: 'memory',
@@ -53,6 +54,9 @@ export const memorySlice = createSlice({
         },
         setSelectedCategoryItems(state, action) {
             state.selectedCategoryItems = action.payload
+        },
+        setSelectedCategoryItem(state, action) {
+            state.selectedCategoryItem = action.payload
         },
         addCategory(state, action) {
             state.categories = [...state.categories, action.payload]

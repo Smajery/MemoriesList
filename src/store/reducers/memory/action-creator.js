@@ -1,5 +1,6 @@
 import {memorySlice} from "./MemorySlice";
 import defaultImg from "../../../img/default-img.png"
+import { v4 as uuidv4 } from 'uuid';
 
 export const MemoryActionCreator = {
     setSelectedCategory: (selectedCategory) => dispatch => {
@@ -15,11 +16,14 @@ export const MemoryActionCreator = {
     setSelectedCategoryItems: (newArray) => dispatch => {
         dispatch(memorySlice.actions.setSelectedCategoryItems(newArray))
     },
+    setSelectedCategoryItem: (item) => dispatch => {
+        dispatch(memorySlice.actions.setSelectedCategoryItem(item))
+    },
 
     addCategory: (name) => dispatch => {
         try {
             const category = {
-                id: Date.now(),
+                id: uuidv4(),
                 name,
             }
             dispatch(memorySlice.actions.addCategory(category))
@@ -29,8 +33,11 @@ export const MemoryActionCreator = {
     },
     addItemInCategory: (name, selectedCategoryId) => dispatch => {
         try{
+            if(!name){
+                return false
+            }
             const newItem = {
-                id: Date.now(),
+                id: uuidv4(),
                 name,
                 img: defaultImg,
                 category: selectedCategoryId
