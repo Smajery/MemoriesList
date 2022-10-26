@@ -31,9 +31,24 @@
     background: transparent;
     border-radius: 5px;
     cursor: pointer;
+    position: relative;
 }
 .category-name p{
     font-size: 1.3em;
+}
+.category-name::before {
+    margin-left: -25px;
+    content: url("../../../img/egyptian-cat.png");
+    display: inline-block;
+    position: absolute;
+}
+/*@keyframes active-cn {*/
+/*    from {margin-left: 0}*/
+/*    to {margin-left: 20px}*/
+/*}*/
+.category-name.active::before {
+    content: url("../../../img/toyger-cat.png");
+    /*animation: active-cn 1s linear forwards;*/
 }
 .category-bar .btn-add {
     padding: 5px 20px;
@@ -69,11 +84,14 @@
     border: none;
     text-align: center;
 }
-.content-name .btn-remove, .btn-sort {
+.content-name .btn-remove{
     padding: 5px 20px;
     background: #FFF3EB;
     border: 2px solid black;
     border-radius: 25px;
+}
+.memories-select {
+    width: 120px;
 }
 .content__items {
     padding: 30px 40px;
@@ -105,18 +123,18 @@
     border: 2px solid black;
     border-radius: 5px;
     cursor: pointer;
-    position: relative;
+    /*position: relative;*/
 }
-.item .btn-remove {
-    width: 30px;
-    height: 30px;
-    top: 0;
-    right: 0;
-    background: transparent;
-    border: none;
-    color: #c40000;
-    position: absolute;
-}
+/*.item .btn-remove {*/
+/*    width: 30px;*/
+/*    height: 30px;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    background: transparent;*/
+/*    border: none;*/
+/*    color: #c40000;*/
+/*    position: absolute;*/
+/*}*/
 .item__img-box {
     min-width: 40%;
     display: flex;

@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {useActions} from "../../hooks/useActions";
+// import {useActions} from "../../hooks/useActions";
 import {useNavigate} from "react-router-dom";
 import {ROUTE_MEMORY} from "../../utils/consts";
 import star from '../../img/starsvg.svg'
@@ -7,12 +7,12 @@ import star from '../../img/starsvg.svg'
 const MemoryItem = (props) => {
     const navigate = useNavigate()
 
-    const {removeItemInCategory} = useActions()
+    // const {removeItemInCategory} = useActions()
 
-    function handleRemoveItem(e) {
-        e.stopPropagation()
-        removeItemInCategory(props.id)
-    }
+    // function handleRemoveItem(e) {
+    //     e.stopPropagation()
+    //     removeItemInCategory(props.id)
+    // }
 
     const [ratingArray, setRatingArray] = useState([])
 
@@ -51,12 +51,12 @@ const MemoryItem = (props) => {
                     )}
                 </div>
             </div>
-            <button
-                className='btn-remove'
-                onClick={handleRemoveItem}
-            >
-                x
-            </button>
+            {/*<button*/}
+            {/*    className='btn-remove'*/}
+            {/*    onClick={handleRemoveItem}*/}
+            {/*>*/}
+            {/*    x*/}
+            {/*</button>*/}
         </div>
     );
 };

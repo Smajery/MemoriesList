@@ -1,13 +1,13 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import MemoryItem from "../components/MemoryPage/MemoryItem";
 import {useSelector} from "react-redux";
 import {useActions} from "../hooks/useActions";
+import MemorySelect from "../components/MemoryPage/MemorySelect";
 
 const MemoryPage = () => {
-    const {categoryItems, categories, selectedCategory} = useSelector(state => state.memoryReducer)
-    const {setSelectedCategory, addCategory, setSelectedCategoryName, removeCategory, addItemInCategory} = useActions()
+    const {categoryItems, categories, selectedCategory, selectedCategoryItems} = useSelector(state => state.memoryReducer)
 
-    const [sortedCategoryItems, setSortedCategoryItems] = useState([])
+    const {setSelectedCategory, addCategory, setSelectedCategoryName, removeCategory, addItemInCategory, setSelectedCategoryItems, sortSelectedCategoryItems} = useActions()
 
     const handleItems = useCallback(() => {
         const newArray = []
@@ -16,8 +16,8 @@ const MemoryPage = () => {
                 newArray.push(categoryItems[i])
             }
         }
-        return setSortedCategoryItems(newArray)
-    }, [selectedCategory, categoryItems])
+        return setSelectedCategoryItems(newArray)
+    }, [selectedCategory, categoryItems, setSelectedCategoryItems])
 
     useEffect(() => {
         handleItems()
@@ -34,10 +34,9 @@ const MemoryPage = () => {
                     <div className='categories'>
                         {categories.map(item =>
                             <div
-                                className='category-name'
+                                className={item.id === selectedCategory.id ? 'category-name active' : 'category-name'}
                                 key={item.id}
                                 onClick={() => setSelectedCategory(item)}
-                                style={{border: item.id === selectedCategory.id ? '2px solid black' : '2px solid transparent'}}
                             >
                                 {item.name
                                     ?
@@ -60,11 +59,10 @@ const MemoryPage = () => {
                 {selectedCategory.id
                     ?
                     <div className='content-name'>
-                        <button
-                            className='btn-sort'
-                        >
-                            Сортування
-                        </button>
+                        <MemorySelect
+                            defaultValue='Сортування'
+                            onChange={sortSelectedCategoryItems}
+                        />
                         <div className='content-name__text'>
                             <input
                                 type='text'
@@ -91,7 +89,7 @@ const MemoryPage = () => {
                 {selectedCategory.id
                     &&
                     <div className='content__items'>
-                        {sortedCategoryItems.map(item =>
+                        {selectedCategoryItems.map(item =>
                             <MemoryItem
                                 key={item.id}
                                 img={item.img}

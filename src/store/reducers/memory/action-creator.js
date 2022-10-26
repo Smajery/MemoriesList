@@ -9,6 +9,13 @@ export const MemoryActionCreator = {
         dispatch(memorySlice.actions.setSelectedCategoryName(name))
         dispatch(memorySlice.actions.setCategoryName(name))
     },
+    setSelectedSort: (sort) => dispatch => {
+        dispatch(memorySlice.actions.setSelectedSort(sort))
+    },
+    setSelectedCategoryItems: (newArray) => dispatch => {
+        dispatch(memorySlice.actions.setSelectedCategoryItems(newArray))
+    },
+
     addCategory: (name) => dispatch => {
         try {
             const category = {
@@ -45,12 +52,20 @@ export const MemoryActionCreator = {
     },
     removeItemInCategory: (itemId) => dispatch => {
         try {
-            //stopPropagation
             const result = window.confirm('Ви впевнені, що хочете видалити категорію?')
             if(result){
                 dispatch(memorySlice.actions.removeItemInCategory(itemId))
             }
         }catch (e) {
+            console.log(e)
+        }
+    },
+    sortSelectedCategoryItems: (sort) => async dispatch=> {
+        try{
+            dispatch(MemoryActionCreator.setSelectedSort(sort))
+            dispatch(memorySlice.actions.sortSelectedCategoryItems(sort))
+
+        } catch (e) {
             console.log(e)
         }
     }
