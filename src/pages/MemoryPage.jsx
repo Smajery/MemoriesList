@@ -5,9 +5,22 @@ import {useActions} from "../hooks/useActions";
 import MemorySelect from "../components/MemoryPage/MemorySelect";
 
 const MemoryPage = () => {
-    const {categoryItems, categories, selectedCategory, selectedCategoryItems} = useSelector(state => state.memoryReducer)
+    const {
+        categoryItems,
+        categories,
+        selectedCategory,
+        selectedCategoryItems
+    } = useSelector(state => state.memoryReducer)
 
-    const {setSelectedCategory, addCategory, setSelectedCategoryName, removeCategory, addItemInCategory, setSelectedCategoryItems, sortSelectedCategoryItems} = useActions()
+    const {
+        setSelectedCategory,
+        addCategory,
+        setSelectedCategoryName,
+        removeCategory,
+        addItemInCategory,
+        setSelectedCategoryItems,
+        sortSelectedCategoryItems
+    } = useActions()
 
     const handleItems = useCallback(() => {
         const newArray = []
@@ -26,10 +39,10 @@ const MemoryPage = () => {
 
     return (
         <div className='memory-page'>
-            <div className='category-bar'>
-                <div className='category__list'>
+            <div className='left-bar'>
+                <div className='category-list'>
                     <div className='list-name'>
-                        <h2>Ваш список</h2>
+                        Ваш список
                     </div>
                     <div className='categories'>
                         {categories.map(item =>
@@ -40,30 +53,31 @@ const MemoryPage = () => {
                             >
                                 {item.name
                                     ?
-                                    <p>{item.name}</p>
+                                    item.name
                                     :
-                                    <p>Назва категорії</p>
+                                    'Назва категорії'
                                 }
                             </div>
                         )}
                     </div>
                 </div>
-                <button
-                    className='btn-add'
-                    onClick={() => addCategory('Назва категорії')}
-                >
-                    Додати
-                </button>
+                <div className='category-list__btn-box'>
+                    <button className='btn-add'
+                            onClick={() => addCategory('Назва категорії')}
+                    >
+                        Додати
+                    </button>
+                </div>
             </div>
-            <div className='content-bar'>
+            <div className='content'>
                 {selectedCategory.id
                     ?
-                    <div className='content-name'>
+                    <div className='content-top'>
                         <MemorySelect
                             defaultValue='Сортування'
                             onChange={sortSelectedCategoryItems}
                         />
-                        <div className='content-name__text'>
+                        <div className='content-name'>
                             <input
                                 type='text'
                                 placeholder='Назва категорії'
@@ -80,9 +94,9 @@ const MemoryPage = () => {
                         </button>
                     </div>
                     :
-                    <div className='content-name'>
-                        <div className='content-name__text'>
-                            <h2>Ви не обрали жодної категорії</h2>
+                    <div className='content-top'>
+                        <div className='content-name'>
+                            Ви не обрали жодної категорії
                         </div>
                     </div>
                 }

@@ -1,69 +1,71 @@
 .memory-page {
-    min-height: 90vh;
+    min-width: 100vw;
     display: flex;
 }
-.category-bar {
+
+.left-bar {
+    width: 220px;
     display: flex;
     flex-direction: column;
     border-right: 2px solid black;
 }
-.category__list {
+
+.category-list {
     padding: 30px 10px 20px 40px;
-    width: 220px;
-    min-height: 100px;
     border-bottom: 2px solid black;
     background: #FFF3EB;
 }
+
 .list-name {
     margin-bottom: 10px;
-    min-height: 40px;
-    display: flex;
-    align-items: center;
+    font-size: 1.5em;
+    font-weight: bold;
 }
+
 .categories {
-    padding-left: 10px;
-    display: inline-flex;
+    padding-left: 20px;
+    display: flex;
     flex-direction: column;
 }
-.category-name{
+
+.category-name {
     margin-bottom: 5px;
-    padding: 0 10px;
     background: transparent;
-    border-radius: 5px;
     cursor: pointer;
     position: relative;
+    font-size: 1.2em;
 }
-.category-name p{
-    font-size: 1.3em;
-}
+
 .category-name::before {
     margin-left: -25px;
     content: url("../../../img/egyptian-cat.png");
     display: inline-block;
     position: absolute;
 }
-/*@keyframes active-cn {*/
-/*    from {margin-left: 0}*/
-/*    to {margin-left: 20px}*/
-/*}*/
+
 .category-name.active::before {
     content: url("../../../img/toyger-cat.png");
-    /*animation: active-cn 1s linear forwards;*/
 }
-.category-bar .btn-add {
+
+.category-list__btn-box {
+    display: flex;
+}
+.category-list__btn-box .btn-add {
     padding: 5px 20px;
-    margin: 30px auto 0 auto;
+    margin: 30px auto 10px auto;
     background: #FFF3EB;
     border: 2px solid black;
     border-radius: 25px;
 }
-.content-bar {
-    width: calc(100% - 220px);
+
+.memory-page .content {
+    width: calc(100vw - 220px);
     display: flex;
     flex-direction: column;
 }
-.content-name {
-    padding: 20px 40px;
+
+.content-top {
+    padding: 30px 40px;
     min-height: 60px;
     display: inline-flex;
     align-items: center;
@@ -71,20 +73,20 @@
     border-bottom: 2px solid black;
     position: relative;
 }
-.content-name__text {
-    min-height: 40px;
-    display: flex;
-    align-items: center;
-}
-.content-name__text input{
-    padding: 0 10px;
-    max-width: 250px;
+
+.content-name {
     font-size: 1.5em;
     font-weight: bold;
+}
+
+.content-name input {
+    padding: 0 10px;
+    max-width: 250px;
     border: none;
     text-align: center;
 }
-.content-name .btn-remove{
+
+.content-top .btn-remove {
     padding: 5px 20px;
     background: #FFF3EB;
     border: 2px solid black;
@@ -92,11 +94,13 @@
     position: absolute;
     right: 40px;
 }
+
 .memories-select {
     width: 122px;
     position: absolute;
     left: 40px;
 }
+
 .content__items {
     padding: 30px 40px;
     display: flex;
@@ -105,6 +109,7 @@
     justify-content: space-between;
     justify-items: flex-end;
 }
+
 .btn-add-box {
     margin-bottom: 20px;
     width: 300px;
@@ -113,12 +118,14 @@
     justify-content: center;
     align-items: center;
 }
+
 .btn-add-box button {
     padding: 5px 20px;
     background: #FFF3EB;
     border: 2px solid black;
     border-radius: 25px;
 }
+
 .item {
     margin-bottom: 20px;
     width: 300px;
@@ -129,6 +136,7 @@
     cursor: pointer;
     /*position: relative;*/
 }
+
 /*.item .btn-remove {*/
 /*    width: 30px;*/
 /*    height: 30px;*/
@@ -140,33 +148,40 @@
 /*    position: absolute;*/
 /*}*/
 .item__img-box {
-    min-width: 40%;
+    width: 40%;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #e7ecef;
     border-right: 1px solid black
 }
+
 .item__content-box {
-    min-width: 60%;
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.item__content-box .text-box{
-    padding: 10px;
-    min-width: 100%;
-    min-height: calc(100% - 30px);
+
+.item__content-box .text-box {
+    width: 100%;
+    height: 70%;
     display: flex;
-    justify-content: center;
-    align-items: center;
     border-bottom: 1px solid black;
 }
+.item__content-box .text-box textarea {
+    padding: 0 5px;
+    line-height: 1.4;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
 .item__content-box .rating-box {
     padding: 5px;
-    min-width: 100%;
-    min-height: 20px;
+    width: 100%;
+    height: 30%;
     display: flex;
     align-items: center;
     justify-content: center;

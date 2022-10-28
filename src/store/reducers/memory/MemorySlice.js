@@ -42,6 +42,14 @@ export const memorySlice = createSlice({
         setSelectedCategoryName(state, action) {
             state.selectedCategory.name = action.payload
         },
+        setSelectedCategoryItemName(state, action) {
+            state.selectedCategoryItem.name = action.payload
+            for(let i = 0; i < state.categoryItems.length; i++ ) {
+                if (state.categoryItems[i].id === state.selectedCategoryItem.id) {
+                    state.categoryItems[i].name = action.payload
+                }
+            }
+        },
         setCategoryName(state, action) {
             for (let i = 0; i < state.categories.length; i++) {
                 if (state.categories[i].id === state.selectedCategory.id) {

@@ -16,7 +16,7 @@ const App = () => {
     return (
         <>
             <Header/>
-            <div className='main'>
+            <div className='wrapper'>
                 <AppRouter/>
             </div>
             <Footer/>

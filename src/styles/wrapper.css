@@ -3,7 +3,7 @@
 @import url('Content/MemoryPage/memory-page.css');
 @import url('Content/ItemPage/item-page.css');
 
-.main {
+.wrapper {
     min-height: 90vh;
-    min-width: 100vh;
+    display: flex;
 }

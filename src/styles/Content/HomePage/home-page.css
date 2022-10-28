@@ -1,9 +1,4 @@
 .home-page {
     padding: 0 40px;
-    min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 

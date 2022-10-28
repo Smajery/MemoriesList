@@ -10,6 +10,9 @@ export const MemoryActionCreator = {
         dispatch(memorySlice.actions.setSelectedCategoryName(name))
         dispatch(memorySlice.actions.setCategoryName(name))
     },
+    setSelectedCategoryItemName: (name) => dispatch => {
+        dispatch(memorySlice.actions.setSelectedCategoryItemName(name))
+    },
     setSelectedSort: (sort) => dispatch => {
         dispatch(memorySlice.actions.setSelectedSort(sort))
     },

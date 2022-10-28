@@ -46,7 +46,9 @@ const MemoryItem = ({selectedCategoryName, item}) => {
             </div>
             <div className='item__content-box'>
                 <div className='text-box'>
-                    <p>{item.name}</p>
+                    <textarea
+                        value={item.name}
+                    />
                 </div>
                 <div className='rating-box'>
                     {ratingArray.map(rate =>
