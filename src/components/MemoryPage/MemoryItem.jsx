@@ -1,8 +1,7 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React from 'react';
 // import {useActions} from "../../hooks/useActions";
 import {useNavigate} from "react-router-dom";
 import {ROUTE_MEMORY} from "../../utils/consts";
-import star from '../../img/starsvg.svg'
 import {useActions} from "../../hooks/useActions";
 
 const MemoryItem = ({selectedCategoryName, item}) => {
@@ -16,25 +15,10 @@ const MemoryItem = ({selectedCategoryName, item}) => {
     //     removeItemInCategory(props.id)
     // }
 
-    const [ratingArray, setRatingArray] = useState([])
-
-    const amountStars = useCallback(() => {
-        const newArray = []
-        for (let i = 1; i <= item.rating; i++) {
-            newArray.push(i)
-        }
-        return setRatingArray(newArray)
-    }, [item.rating])
-
     function openItemPage() {
         setSelectedCategoryItem(item)
         navigate(ROUTE_MEMORY + '/' + selectedCategoryName + '/' + item.name)
     }
-
-    useEffect(() => {
-        amountStars()
-    }, [item.rating, amountStars])
-
 
     return (
         <div
@@ -48,16 +32,35 @@ const MemoryItem = ({selectedCategoryName, item}) => {
                 <div className='text-box'>
                     <textarea
                         value={item.name}
+                        readOnly={true}
                     />
                 </div>
                 <div className='rating-box'>
-                    {ratingArray.map(rate =>
-                        <img
-                            key={rate}
-                            src={star}
-                            alt={rate}
-                        />
-                    )}
+                    <input type="radio" id="star-5" name={`rating-${item.id}`} value="5"
+                           checked={item.rating === 5}
+                           readOnly={true}
+                    />
+                    <label htmlFor="star-5" title="Оцінка «5»"/>
+                    <input type="radio" id="star-4" name={`rating-${item.id}`} value="4"
+                           checked={item.rating === 4}
+                           readOnly={true}
+                    />
+                    <label htmlFor="star-4" title="Оцінка «4»"/>
+                    <input type="radio" id="star-3" name={`rating-${item.id}`} value="3"
+                           checked={item.rating === 3}
+                           readOnly={true}
+                    />
+                    <label htmlFor="star-3" title="Оцінка «3»"/>
+                    <input type="radio" id="star-2" name={`rating-${item.id}`} value="2"
+                           checked={item.rating === 2}
+                           readOnly={true}
+                    />
+                    <label htmlFor="star-2" title="Оцінка «2»"/>
+                    <input type="radio" id="star-1" name={`rating-${item.id}`} value="1"
+                           checked={item.rating === 1}
+                           readOnly={true}
+                    />
+                    <label htmlFor="star-1" title="Оцінка «1»"/>
                 </div>
             </div>
             {/*<button*/}

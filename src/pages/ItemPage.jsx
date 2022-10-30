@@ -1,23 +1,12 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React from 'react';
 import {useSelector} from "react-redux";
-import star from "../img/starsvg.svg";
 import {useActions} from "../hooks/useActions";
+import ItemRating from "../components/ItemPage/ItemRating";
 
 
 const ItemPage = () => {
     const {selectedCategoryItem} = useSelector(state => state.memoryReducer)
-
     const {setSelectedCategoryItemName} = useActions()
-
-    const [ratingArray, setRatingArray] = useState([])
-
-    const amountStars = useCallback(() => {
-        const newArray = []
-        for (let i = 1; i <= selectedCategoryItem.rating; i++) {
-            newArray.push(i)
-        }
-        return setRatingArray(newArray)
-    }, [selectedCategoryItem.rating])
 
     // const uploadFile = (file) => {
     //
@@ -28,10 +17,6 @@ const ItemPage = () => {
     //     }
     //
     // }
-
-    useEffect(() => {
-        amountStars()
-    }, [selectedCategoryItem.rating, amountStars])
 
     return (
         <div className='item-page'>
@@ -54,15 +39,7 @@ const ItemPage = () => {
                                 onChange={e => setSelectedCategoryItemName(e.target.value)}
                             />
                         </div>
-                        <div className='item-rating'>
-                            {ratingArray.map(rate =>
-                                <img
-                                    key={rate}
-                                    src={star}
-                                    alt={rate}
-                                />
-                            )}
-                        </div>
+                        <ItemRating />
                     </div>
                 </div>
             </div>

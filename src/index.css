@@ -84,6 +84,12 @@ select {
   font: inherit;
 }
 
+textarea {
+  border: none;
+  outline: none;
+  resize: none;
+}
+
 button {
   cursor: pointer;
 }

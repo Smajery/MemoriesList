@@ -25,7 +25,8 @@
     border-right: 2px solid black;
     position: relative;
 }
-.content-left input{
+
+.content-left input {
     position: absolute;
     left: 0;
 }
@@ -56,6 +57,37 @@
     padding: 10px 5px;
     height: 25%;
     display: flex;
+    flex-direction: row-reverse;
     align-items: center;
     justify-content: center;
 }
+
+.item-rating:not(:checked) > input {
+    display: none;
+}
+
+.item-rating:not(:checked) > label {
+    width: 50px;
+    height: 50px;
+    background-image: url("../../../img/starsvg.svg");
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+}
+
+.item-rating > input:checked ~ label {
+    filter: grayscale(0);
+}
+
+.item-rating:not(:checked) > label:hover,
+.item-rating:not(:checked) > label:hover ~ label {
+    filter: grayscale(0);
+}
+
+.item-rating > input:checked + label:hover,
+.item-rating > input:checked + label:hover ~ label,
+.item-rating > input:checked ~ label:hover,
+.item-rating > input:checked ~ label:hover ~ label,
+.item-rating > label:hover ~ input:checked ~ label {
+    filter: grayscale(0);
+}
+

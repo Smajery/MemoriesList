@@ -1,15 +1,15 @@
 .loader {
-}
-
-.loader__container {
-    height: calc(100vh - 10vh);
+    min-width: 100vw;
+    min-height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.roller {
+.loader__container {
+}
 
+.roller {
     width: 100px;
     height: 100px;
     border: 5px dotted dodgerblue;
@@ -18,7 +18,6 @@
     position: relative;
     box-sizing: border-box;
     animation: rotation 2s linear infinite;
-
 }
 
 @keyframes rotation {

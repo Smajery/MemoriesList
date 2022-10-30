@@ -50,6 +50,14 @@ export const memorySlice = createSlice({
                 }
             }
         },
+        setSelectedCategoryItemRating(state, action) {
+            state.selectedCategoryItem.rating = action.payload
+            for(let i = 0; i < state.categoryItems.length; i++ ) {
+                if (state.categoryItems[i].id === state.selectedCategoryItem.id) {
+                    state.categoryItems[i].rating = action.payload
+                }
+            }
+        },
         setCategoryName(state, action) {
             for (let i = 0; i < state.categories.length; i++) {
                 if (state.categories[i].id === state.selectedCategory.id) {
