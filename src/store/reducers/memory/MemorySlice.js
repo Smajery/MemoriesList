@@ -25,9 +25,9 @@ const initialState = {
     selectedCategory: {},
     selectedCategoryItems: [],
     options: [
-        {name: 'По імені', value: 'name'},
-        {name: 'По рейтингу: за спаданням', value: 'ratingDown'},
-        {name: 'По рейтингу: за зростанням', value: 'ratingUp'},
+        {name: 'За назвою', value: 'name'},
+        {name: 'За спаданням', value: 'ratingDown'},
+        {name: 'За зростанням', value: 'ratingUp'},
     ],
     selectedSort: '',
     selectedCategoryItem: {},
@@ -55,6 +55,14 @@ export const memorySlice = createSlice({
             for(let i = 0; i < state.categoryItems.length; i++ ) {
                 if (state.categoryItems[i].id === state.selectedCategoryItem.id) {
                     state.categoryItems[i].rating = action.payload
+                }
+            }
+        },
+        setSelectedCategoryItemImg(state, action) {
+            state.selectedCategoryItem.img = action.payload
+            for (let i = 0; i < state.categoryItems.length; i++){
+                if(state.categoryItems[i].id === state.selectedCategoryItem.id){
+                    state.categoryItems[i].img = action.payload
                 }
             }
         },

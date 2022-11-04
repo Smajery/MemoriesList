@@ -1,22 +1,24 @@
-import React from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {useSelector} from "react-redux";
 import {useActions} from "../hooks/useActions";
 import ItemRating from "../components/ItemPage/ItemRating";
 
 
 const ItemPage = () => {
-    const {selectedCategoryItem} = useSelector(state => state.memoryReducer)
-    const {setSelectedCategoryItemName} = useActions()
+    const {selectedCategoryItem, categoryItems} = useSelector(state => state.memoryReducer)
+    const {setSelectedCategoryItem, setSelectedCategoryItemName, setSelectedCategoryItemImg} = useActions()
 
-    // const uploadFile = (file) => {
-    //
-    //     // файла <5 Мб
-    //     if (file.size > 5 * 1024 * 1024) {
-    //         alert("Файл должен быть не более 5 МБ.");
-    //         return;
-    //     }
-    //
-    // }
+    const fetchSelectedItem = useCallback(() => {
+        for (let i = 0; i < categoryItems.length; i++){
+            if(categoryItems[i].id === Number(localStorage.getItem('itemId'))){
+                setSelectedCategoryItem(categoryItems[i])
+            }
+        }
+    }, [categoryItems, selectedCategoryItem])
+
+    useEffect(() => {
+        fetchSelectedItem()
+    }, [fetchSelectedItem])
 
     return (
         <div className='item-page'>
@@ -30,6 +32,7 @@ const ItemPage = () => {
                         <input
                             type='file'
                             accept=".jpg, .jpeg, .png, .gif"
+                            onChange={e => setSelectedCategoryItemImg(e.target.files)}
                         />
                     </div>
                     <div className='content-right'>

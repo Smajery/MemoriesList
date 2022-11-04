@@ -16,8 +16,10 @@ const MemoryItem = ({selectedCategoryName, item}) => {
     // }
 
     function openItemPage() {
+        localStorage.removeItem('itemId')
+        localStorage.setItem('itemId', item.id)
         setSelectedCategoryItem(item)
-        navigate(ROUTE_MEMORY + '/' + selectedCategoryName + '/' + item.name)
+        navigate(ROUTE_MEMORY + `/${selectedCategoryName}/${item.name}`)
     }
 
     return (

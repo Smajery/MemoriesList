@@ -84,6 +84,7 @@
     max-width: 250px;
     border: none;
     text-align: center;
+    outline: none;
 }
 
 .content-top .btn-remove {
@@ -96,7 +97,7 @@
 }
 
 .memories-select {
-    width: 122px;
+    padding-right: 5px;
     position: absolute;
     left: 40px;
 }
@@ -147,6 +148,7 @@
 /*    color: #c40000;*/
 /*    position: absolute;*/
 /*}*/
+
 .item__img-box {
     width: 40%;
     display: flex;
@@ -171,6 +173,7 @@
     border-bottom: 1px solid black;
 }
 .item__content-box .text-box textarea {
+    text-align: center;
     padding: 0 5px;
     line-height: 1.4;
     z-index: -1;

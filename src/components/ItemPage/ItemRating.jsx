@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {useActions} from "../../hooks/useActions";
 
@@ -6,11 +6,23 @@ const ItemRating = () => {
     const {selectedCategoryItem} = useSelector(state => state.memoryReducer)
     const {setSelectedCategoryItemRating} = useActions()
 
-    const [ratingFive, setRatingFive] = useState(selectedCategoryItem.rating === 5)
-    const [ratingFour, setRatingFour] = useState(selectedCategoryItem.rating === 4)
-    const [ratingThree, setRatingThree] = useState(selectedCategoryItem.rating === 3)
-    const [ratingTwo, setRatingTwo] = useState(selectedCategoryItem.rating === 2)
-    const [ratingOne, setRatingOne] = useState(selectedCategoryItem.rating === 1)
+    const [ratingFive, setRatingFive] = useState(false)
+    const [ratingFour, setRatingFour] = useState(false)
+    const [ratingThree, setRatingThree] = useState(false)
+    const [ratingTwo, setRatingTwo] = useState(false)
+    const [ratingOne, setRatingOne] = useState(false)
+
+    const setRating = useCallback(() => {
+        setRatingFive(selectedCategoryItem.rating === 5)
+        setRatingFour(selectedCategoryItem.rating === 4)
+        setRatingThree(selectedCategoryItem.rating === 3)
+        setRatingTwo(selectedCategoryItem.rating === 2)
+        setRatingOne(selectedCategoryItem.rating === 1)
+    }, [selectedCategoryItem.rating])
+
+    useEffect(() => {
+        setRating()
+    }, [setRating])
 
     const currentRatingIsOne = () => {
         setRatingFive(false)

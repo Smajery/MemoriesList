@@ -14,15 +14,20 @@ const LoginPage = loadable(() => import("../pages/LoginPage"), {
 const ItemPage = loadable(() => import("../pages/ItemPage"), {
     fallback: <Loader/>
 });
+const ErrorPage = loadable(() => import("../pages/ErrorPage"), {
+    fallback: <Loader/>
+});
 
 
 export const publicRoutes = [
     {path: ROUTE_HOME, component: HomePage},
     {path: ROUTE_LOGIN, component: LoginPage},
+    {path: '*', component: ErrorPage},
 ]
 
 export const privateRoutes = [
     {path: ROUTE_HOME, component: HomePage},
     {path: ROUTE_MEMORY, component: MemoryPage},
-    {path: ROUTE_MEMORY + '/:id' + '/:id', component: ItemPage},
+    {path: ROUTE_MEMORY + '/:id/:id', component: ItemPage},
+    {path: '*', component: ErrorPage},
 ]

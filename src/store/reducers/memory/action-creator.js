@@ -1,6 +1,6 @@
 import {memorySlice} from "./MemorySlice";
 import defaultImg from "../../../img/default-img.png"
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 export const MemoryActionCreator = {
     setSelectedCategory: (selectedCategory) => dispatch => {
@@ -16,6 +16,13 @@ export const MemoryActionCreator = {
     setSelectedCategoryItemRating: (rating) => dispatch => {
         dispatch(memorySlice.actions.setSelectedCategoryItemRating(rating))
     },
+    setSelectedCategoryItemImg: (img) => dispatch => {
+        if (img.size > 5 * 1024 * 1024) {
+            alert("Файл должен быть не более 5 МБ.");
+            return;
+        }
+        dispatch(memorySlice.actions.setSelectedCategoryItemImg(img))
+    },
     setSelectedSort: (sort) => dispatch => {
         dispatch(memorySlice.actions.setSelectedSort(sort))
     },
@@ -25,7 +32,6 @@ export const MemoryActionCreator = {
     setSelectedCategoryItem: (item) => dispatch => {
         dispatch(memorySlice.actions.setSelectedCategoryItem(item))
     },
-
     addCategory: (name) => dispatch => {
         try {
             const category = {
@@ -34,12 +40,12 @@ export const MemoryActionCreator = {
             }
             dispatch(memorySlice.actions.addCategory(category))
         } catch (e) {
-            console.log(e)
+            alert(e)
         }
     },
     addItemInCategory: (name, selectedCategoryId) => dispatch => {
-        try{
-            if(!name){
+        try {
+            if (!name) {
                 return false
             }
             const newItem = {
@@ -49,37 +55,37 @@ export const MemoryActionCreator = {
                 category: selectedCategoryId
             }
             dispatch(memorySlice.actions.addItemInCategory(newItem))
-        }catch (e) {
-            console.log(e)
+        } catch (e) {
+            alert(e)
         }
     },
     removeCategory: () => dispatch => {
         try {
             const result = window.confirm('Ви впевнені, що хочете видалити категорію?')
-            if(result){
+            if (result) {
                 dispatch(memorySlice.actions.removeCategory())
             }
-        }catch (e) {
-            console.log(e)
+        } catch (e) {
+            alert(e)
         }
     },
     removeItemInCategory: (itemId) => dispatch => {
         try {
             const result = window.confirm('Ви впевнені, що хочете видалити категорію?')
-            if(result){
+            if (result) {
                 dispatch(memorySlice.actions.removeItemInCategory(itemId))
             }
-        }catch (e) {
-            console.log(e)
+        } catch (e) {
+            alert(e)
         }
     },
-    sortSelectedCategoryItems: (sort) => async dispatch=> {
-        try{
+    sortSelectedCategoryItems: (sort) => async dispatch => {
+        try {
             dispatch(MemoryActionCreator.setSelectedSort(sort))
             dispatch(memorySlice.actions.sortSelectedCategoryItems(sort))
 
         } catch (e) {
-            console.log(e)
+            alert(e)
         }
     }
 }

@@ -7,7 +7,7 @@ export const AuthActionCreator = {
     logIn: () => async dispatch => {
         try {
             dispatch(AuthActionCreator.setIsAuth(true))
-            localStorage.setItem("auth", JSON.stringify(true))
+            localStorage.setItem('auth', JSON.stringify(true))
         } catch (e) {
             console.log(e)
         }
@@ -15,7 +15,7 @@ export const AuthActionCreator = {
     logOut: () => async dispatch => {
         try {
             dispatch(AuthActionCreator.setIsAuth(false))
-            localStorage.removeItem("auth")
+            localStorage.removeItem('auth')
         }catch (e) {
             console.log(e)
         }

@@ -8,9 +8,7 @@ const App = () => {
     const {setIsAuth} = useActions()
 
     useEffect(() => {
-        if (localStorage.getItem("auth")) {
-            setIsAuth(true)
-        }
+        setIsAuth(localStorage.getItem('auth'))
     }, [setIsAuth])
 
     return (

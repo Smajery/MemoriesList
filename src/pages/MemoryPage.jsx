@@ -22,19 +22,19 @@ const MemoryPage = () => {
         sortSelectedCategoryItems
     } = useActions()
 
-    const handleItems = useCallback(() => {
+    const fetchItems = useCallback(() => {
         const newArray = []
         for (let i = 0; i < categoryItems.length; i++) {
             if (categoryItems[i].category === selectedCategory.id) {
                 newArray.push(categoryItems[i])
             }
         }
-        return setSelectedCategoryItems(newArray)
+        setSelectedCategoryItems(newArray)
     }, [selectedCategory, categoryItems])
 
     useEffect(() => {
-        handleItems()
-    }, [selectedCategory, categoryItems, handleItems])
+        fetchItems()
+    }, [fetchItems])
 
 
     return (
