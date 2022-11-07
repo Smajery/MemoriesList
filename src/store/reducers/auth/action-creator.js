@@ -8,6 +8,7 @@ export const AuthActionCreator = {
         try {
             dispatch(AuthActionCreator.setIsAuth(true))
             localStorage.setItem('auth', JSON.stringify(true))
+
         } catch (e) {
             console.log(e)
         }

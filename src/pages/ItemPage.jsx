@@ -6,7 +6,12 @@ import ItemRating from "../components/ItemPage/ItemRating";
 
 const ItemPage = () => {
     const {selectedCategoryItem, categoryItems} = useSelector(state => state.memoryReducer)
-    const {setSelectedCategoryItem, setSelectedCategoryItemName, setSelectedCategoryItemImg} = useActions()
+    const {
+        setSelectedCategoryItem,
+        setSelectedCategoryItemName,
+        setSelectedCategoryItemImg,
+        setSelectedCategoryItemDescription,
+    } = useActions()
 
     const fetchSelectedItem = useCallback(() => {
         for (let i = 0; i < categoryItems.length; i++){
@@ -43,6 +48,14 @@ const ItemPage = () => {
                             />
                         </div>
                         <ItemRating />
+                    </div>
+                </div>
+                <div className='description-card'>
+                    <div className='description-content'>
+                        <textarea
+                            value={selectedCategoryItem.description}
+                            onChange={e => setSelectedCategoryItemDescription(e.target.value)}
+                        />
                     </div>
                 </div>
             </div>

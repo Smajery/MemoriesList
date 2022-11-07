@@ -13,6 +13,9 @@ export const MemoryActionCreator = {
     setSelectedCategoryItemName: (name) => dispatch => {
         dispatch(memorySlice.actions.setSelectedCategoryItemName(name))
     },
+    setSelectedCategoryItemDescription: (description) => dispatch => {
+        dispatch(memorySlice.actions.setSelectedCategoryItemDescription(description))
+    },
     setSelectedCategoryItemRating: (rating) => dispatch => {
         dispatch(memorySlice.actions.setSelectedCategoryItemRating(rating))
     },

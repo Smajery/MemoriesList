@@ -4,18 +4,18 @@ import imgGame from "../../../img/game.png";
 
 const initialState = {
     categoryItems: [
-        {id: 1, name: 'Напівсолодке червоне', img: imgWine, category: 1, rating: 2},
-        {id: 2, name: 'Сухе біле', img: imgWine, category: 1, rating: 5},
-        {id: 3, name: 'Сухе червоне', img: imgWine, category: 1, rating: 4},
-        {id: 4, name: 'Напівсолодке біле', img: imgWine, category: 1, rating: 3},
-        {id: 5, name: 'Гранатове сухе вино', img: imgWine, category: 1, rating: 1},
-        {id: 6, name: 'Гранатове напівсолодке вино', img: imgWine, category: 1, rating: 3},
-        {id: 7, name: 'Ігра 1', img: imgGame, category: 2, rating: 2},
-        {id: 8, name: 'Ігра 2', img: imgGame, category: 2, rating: 3},
-        {id: 9, name: 'Ігра 3', img: imgGame, category: 2, rating: 4},
-        {id: 10, name: 'Ігра 4', img: imgGame, category: 2, rating: 5},
-        {id: 11, name: 'Ігра 5', img: imgGame, category: 2, rating: 3},
-        {id: 12, name: 'Ігра 6', img: imgGame, category: 2, rating: 1},
+        {id: 1, name: 'Напівсолодке червоне', img: imgWine, category: 1, rating: 2, description: 'Дорогое и не стоит своих денег'},
+        {id: 2, name: 'Сухе біле', img: imgWine, category: 1, rating: 5, description: 'Очень вкусное, Мёмне нравится белые нотки'},
+        {id: 3, name: 'Сухе червоне', img: imgWine, category: 1, rating: 4, description: 'Купил на распродаже, еще не пробовал'},
+        {id: 4, name: 'Напівсолодке біле', img: imgWine, category: 1, rating: 3, description: 'Неплохое'},
+        {id: 5, name: 'Гранатове сухе вино', img: imgWine, category: 1, rating: 1, description: 'Ужасное'},
+        {id: 6, name: 'Гранатове напівсолодке вино', img: imgWine, category: 1, rating: 3, description: 'Норм'},
+        {id: 7, name: 'Ігра 1', img: imgGame, category: 2, rating: 2, description: ''},
+        {id: 8, name: 'Ігра 2', img: imgGame, category: 2, rating: 3, description: ''},
+        {id: 9, name: 'Ігра 3', img: imgGame, category: 2, rating: 4, description: ''},
+        {id: 10, name: 'Ігра 4', img: imgGame, category: 2, rating: 5, description: ''},
+        {id: 11, name: 'Ігра 5', img: imgGame, category: 2, rating: 3, description: ''},
+        {id: 12, name: 'Ігра 6', img: imgGame, category: 2, rating: 1, description: ''},
     ],
     categories: [
         {id: 1, name: 'Вина'},
@@ -47,6 +47,14 @@ export const memorySlice = createSlice({
             for(let i = 0; i < state.categoryItems.length; i++ ) {
                 if (state.categoryItems[i].id === state.selectedCategoryItem.id) {
                     state.categoryItems[i].name = action.payload
+                }
+            }
+        },
+        setSelectedCategoryItemDescription(state, action) {
+            state.selectedCategoryItem.description = action.payload
+            for(let i = 0; i < state.categoryItems.length; i++ ) {
+                if (state.categoryItems[i].id === state.selectedCategoryItem.id) {
+                    state.categoryItems[i].description = action.payload
                 }
             }
         },

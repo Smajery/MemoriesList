@@ -9,13 +9,18 @@ const Navbar = () => {
     const isAuth = useSelector(state => state.authReducer.isAuth)
     const {logOut} = useActions()
 
+    function logOutAc() {
+        logOut()
+        navigate(ROUTE_LOGIN)
+    }
+
     return (
         isAuth
             ?
             <ul className='nav'>
                 <li onClick={() => navigate(ROUTE_HOME)}>Home</li>
                 <li onClick={() => navigate(ROUTE_MEMORY)}>Memory</li>
-                <li onClick={logOut}>Выйти</li>
+                <li onClick={logOutAc}>Выйти</li>
             </ul>
             :
             <ul className='nav'>
