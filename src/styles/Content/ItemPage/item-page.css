@@ -1,0 +1,116 @@
+.item-page {
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    background: lightgray;
+}
+
+.item-page .content {
+    width: 80vw;
+    display: flex;
+    flex-direction: column;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    background: white;
+}
+
+.item-card {
+    height: 300px;
+    display: flex;
+    border-bottom: 2px solid black;
+}
+
+.content-left {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    border-right: 2px solid black;
+    position: relative;
+}
+
+.content-left input {
+    position: absolute;
+    left: 0;
+}
+
+.content-right {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-name {
+    padding: 30px 20px;
+    height: 75%;
+    border-bottom: 2px solid black;
+    display: flex;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.item-name textarea {
+    width: 100%;
+    height: 100%;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.item-rating {
+    padding: 10px 5px;
+    height: 25%;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-rating:not(:checked) > input {
+    display: none;
+}
+
+.item-rating:not(:checked) > label {
+    width: 50px;
+    height: 50px;
+    background-image: url("../../../img/starsvg.svg");
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+}
+
+.item-rating > input:checked ~ label {
+    filter: grayscale(0);
+}
+
+.item-rating:not(:checked) > label:hover,
+.item-rating:not(:checked) > label:hover ~ label {
+    filter: grayscale(0);
+}
+
+.item-rating > input:checked + label:hover,
+.item-rating > input:checked + label:hover ~ label,
+.item-rating > input:checked ~ label:hover,
+.item-rating > input:checked ~ label:hover ~ label,
+.item-rating > label:hover ~ input:checked ~ label {
+    filter: grayscale(0);
+}
+
+.description-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.description-content {
+    margin-top: 40px;
+    width: 200px;
+    height: 200px;
+    display: flex;
+}
+
+.description-content textarea {
+    padding: 5px 10px;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
