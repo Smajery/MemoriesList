@@ -1,0 +1,9 @@
+@import url('Content/HomePage/home-page.css');
+@import url('Content/LoginPage/login-page.css');
+@import url('Content/MemoryPage/memory-page.css');
+@import url('Content/ItemPage/item-page.css');
+
+.wrapper {
+    min-height: 90vh;
+    display: flex;
+}
